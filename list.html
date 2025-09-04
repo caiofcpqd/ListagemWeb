@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de produtos</title>
+<link rel="icon" type="image/png" href="icon.png">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: Arial, sans-serif; background: #08080c; color:#fff; }
+
+  /* NAVBAR */
+  .navbar { display:flex; justify-content:space-between; align-items:center; padding:20px 50px; background:#08080c; }
+  .logo img { height:50px; }
+  .navbar ul { display:flex; gap:25px; list-style:none; }
+  .navbar ul li a { color:#ccc; font-size:13px; text-decoration:none; transition:0.3s; }
+  .navbar ul li a:hover { color:rgb(205,57,20); }
+  .cart-btn { background:rgb(234,81,43); padding:8px 16px; border-radius:6px; font-weight:bold; font-size:14px; color:white; text-decoration:none; transition:0.3s; }
+  .cart-btn:hover { background:rgb(205,57,20); }
+
+  /* PRODUTOS */
+  .products-section { padding:40px 60px; text-align:center; }
+  .products-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(205px,1fr)); gap:20px; justify-content:center; max-width:900px; margin:0 auto; }
+  .product-card { background:#08080c; border:1px solid rgba(128,128,128,0.5); border-radius:10px; overflow:hidden; width:220px; text-align:left; box-shadow:0 0 10px rgba(0,0,0,0.6); transition: transform 0.3s; }
+  .product-card:hover { transform:translateY(-5px); }
+  .product-card img { width:100%; height:180px; object-fit:cover; }
+  .product-info { padding:15px; font-weight:bold; }
+  .product-info h3 { font-size:18px; margin-bottom:10px; }
+  .old-price { text-decoration:line-through; color:#777; font-size:14px; }
+  .price { font-size:18px; font-weight:bold; color:#fff; margin:10px 0; }
+  .buy-btn { display:inline-block; background:rgb(234,81,43); color:#fff; padding:10px 32px; border-radius:3px; font-size:14px; text-decoration:none; transition:0.3s; }
+  .buy-btn:hover { background:rgb(205,57,20); }
+
+  /* FOOTER */
+  .footer { background:#08080c; color:#bbb; padding:20px 40px; text-align:center; }
+  .footer-top { display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #222; padding-bottom:15px; margin-bottom:15px; }
+  .footer-logo img { height:50px; }
+  .footer-socials a { color:rgb(234,81,43); font-size:20px; margin:0 10px; transition:0.3s; }
+  .footer-socials a:hover { color:#fff; }
+  .footer-bottom { display:flex; justify-content:space-between; font-size:14px; color:#777; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="logo"><img src="imgs/log.png" alt="Logo"></div>
+  <ul>
+    <li><a href="index.html">Principal</a></li>
+    <li><a href="list.html">Produtos</a></li>
+    <li><a href="">Termos de serviço</a></li>
+  </ul>
+  <a href="" class="cart-btn" target="_blank">
+    <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/discord-white-icon.png" alt="Discord" style="width:20px; vertical-align:middle; margin-right:5px;"> Discord
+  </a>
+</header>
+
+<!-- PRODUTOS -->
+<section class="products-section">
+  <div class="products-grid" id="products-grid">
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-logo"><img src="imgs/log.png" alt="Logo"></div>
+    <div class="footer-socials">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-discord"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Copyright © 2025 - VIP</p>
+  </div>
+</footer>
+
+<script>
+    const produtos = {
+    VIP1: { 
+        title: "Produto 1", 
+        oldPrice: "R$ 0,00", 
+        price: "R$ 0,00", 
+        img: "https://files.tecnoblog.net/wp-content/uploads/2023/12/gta-vi-destaque-1060x596.jpg" 
+    },
+    VIP2: { 
+        title: "Produto 2", 
+        oldPrice: "R$ 0,00", 
+        price: "R$ 0,00", 
+        img: "https://files.tecnoblog.net/wp-content/uploads/2023/12/gta-vi-destaque-1060x596.jpg" 
+    },
+    VIP3: { 
+        title: "Produto 3", 
+        oldPrice: "R$ 0,00", 
+        price: "R$ 0,00", 
+        img: "https://files.tecnoblog.net/wp-content/uploads/2023/12/gta-vi-destaque-1060x596.jpg" 
+    },
+    VIP4: { 
+        title: "Produto 4", 
+        oldPrice: "R$ 0,00", 
+        price: "R$ 0,00", 
+        img: "https://files.tecnoblog.net/wp-content/uploads/2023/12/gta-vi-destaque-1060x596.jpg" 
+    },
+    VIP5: { 
+        title: "Produto 5", 
+        oldPrice: "R$ 0,00", 
+        price: "R$ 0,00", 
+        img: "https://files.tecnoblog.net/wp-content/uploads/2023/12/gta-vi-destaque-1060x596.jpg" 
+    },
+    VIP6: { 
+        title: "Produto 6", 
+        oldPrice: "R$ 0,00", 
+        price: "R$ 0,00", 
+        img: "https://files.tecnoblog.net/wp-content/uploads/2023/12/gta-vi-destaque-1060x596.jpg" 
+    },
+    VIP7: { 
+        title: "Produto 7", 
+        oldPrice: "R$ 0,00", 
+        price: "R$ 0,00", 
+        img: "https://files.tecnoblog.net/wp-content/uploads/2023/12/gta-vi-destaque-1060x596.jpg" 
+    }
+    };
+
+  const grid = document.getElementById('products-grid');
+
+  Object.entries(produtos).forEach(([id, p]) => 
+  {
+    const card = document.createElement('div');
+    card.classList.add('product-card');
+    card.innerHTML = `
+      <img src="${p.img}" alt="${p.title}">
+      <div class="product-info">
+        <h3>${p.title}</h3>
+        <p class="old-price">${p.oldPrice}</p>
+        <p class="price">${p.price}</p>
+        <a href="produtos.html?produto=${id}" class="buy-btn">🛒 Comprar agora</a>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIP Produtos</title>
+<link rel="icon" type="image/png" href="icon.png">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, sans-serif; background: #08080c; color: #fff; }
+
+  /* NAVBAR */
+  .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #08080c; }
+  .logo img { height: 50px; }
+  .navbar ul { display: flex; gap: 25px; list-style: none; }
+  .navbar ul li a { color: #ccc; font-size: 13px; text-decoration: none; transition: color 0.3s; }
+  .navbar ul li a:hover { color: rgb(205, 57, 20); }
+  .cart-btn { background: rgb(234, 81, 43); padding: 8px 16px; border-radius: 6px; font-weight: bold; font-size: 14px; color: white; text-decoration: none; transition: background 0.3s; }
+  .cart-btn:hover { background: rgb(205, 57, 20); }
+
+  /* PRODUTO */
+  .product-page { padding: 50px; display: flex; justify-content: center; }
+  .product-container { display: flex; gap: 40px; max-width: 1200px; width: 100%; }
+  .product-left { flex: 2; }
+  .product-image { width: 100%; border-radius: 10px; margin-bottom: 20px; }
+  .product-description { background: #0d0d12; padding: 20px; border-radius: 10px; border: 1px solid #222; }
+  .product-description h3 { margin-bottom: 15px; font-size: 18px; color: white; }
+  .product-description a { color: white; text-decoration: none; }
+  .product-highlights h4 { margin: 20px 0 10px; color: white; }
+  .product-highlights ul { list-style: none; }
+  .product-highlights li { margin-bottom: 8px; font-size: 12px; }
+
+  .product-right { flex: 1; background: #0d0d12; padding: 20px; border-radius: 10px; border: 1px solid #222; height: 490px; }
+  .stock { color: #ccc; font-size: 14px; }
+  .old-price { text-decoration: line-through; color: #777; margin: 5px 0; }
+  .price { font-size: 24px; font-weight: bold; color: white; margin: 5px 0 15px; }
+  .buy-btn { display: block; background: rgb(234, 81, 43); color: #fff; text-align: center; padding: 12px; border-radius: 8px; font-weight: bold; margin-bottom: 10px; text-decoration: none; transition: background 0.3s; }
+  .buy-btn:hover { background: rgb(205, 57, 20); }
+  .cart-btn2 { display: block; border: 1px solid rgb(234, 81, 43); color: rgb(234, 81, 43); text-align: center; padding: 12px; border-radius: 8px; font-weight: bold; margin-bottom: 20px; text-decoration: none; transition: all 0.3s; }
+  .cart-btn2:hover { background: rgb(234, 81, 43); color: white; }
+  .info-box { border: 1px solid #222; padding: 15px; border-radius: 8px; margin-bottom: 15px; }
+  .info-box h4 { color: white; margin-bottom: 5px; font-size: 14px; }
+  .info-box p { color: white; margin-bottom: 5px; font-size: 13px; }
+  .info-image { width: 100%; max-width: 695px; margin: 10px 0; border-radius: 10px; }
+
+  /* FOOTER */
+  .footer { background: #08080c; color: #bbb; padding: 20px 40px; text-align: center; }
+  .footer-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; padding-bottom: 15px; margin-bottom: 15px; }
+  .footer-logo img { height: 50px; }
+  .footer-socials a { color: rgb(234, 81, 43); font-size: 20px; margin: 0 10px; transition: color 0.3s; }
+  .footer-socials a:hover { color: #fff; }
+  .footer-bottom { display: flex; justify-content: space-between; font-size: 14px; color: #777; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="logo">
+    <img src="imgs/log.png" alt="Logo">
+  </div>
+  <ul>
+    <li><a href="index.html">Principal</a></li>
+    <li><a href="list.html">Produtos</a></li>
+    <li><a href="">Termos de serviço</a></li>
+  </ul>
+  <a href="https://discord.gg/uRhhZW5ABx" class="cart-btn" target="_blank">
+    <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/discord-white-icon.png" alt="Discord" style="width:20px; vertical-align:middle; margin-right:5px;"> Discord
+  </a>
+</header>
+
+<!-- Produto -->
+<section class="product-page">
+  <div class="product-container">
+
+    <!-- ESQUERDA -->
+    <div class="product-left">
+      <img id="product-image" src="" alt="Produto" class="product-image">
+      <div class="product-description">
+        <h3>Informações</h3>
+        <div class="product-highlights">
+          <h4>✨ Destaques:</h4>
+          <ul id="highlights-list"></ul>
+        </div>
+        <img id="info-image" src="" alt="Informações extras" class="info-image">
+        <div class="product-highlights">
+          <ul id="functions-list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIREITA -->
+    <div class="product-right">
+      <h2 id="product-title"></h2>
+      <p class="old-price" id="old-price"></p>
+      <p class="price" id="price"></p>
+      <a id="buy-btn" href="" class="buy-btn">🛒 Comprar agora</a>
+
+      <div class="info-box">
+        <h4>⚡ Entrega imediata</h4>
+        <p>Receba o seu pacote imediatamente após o pagamento.</p>
+      </div>
+      <div class="info-box">
+        <h4>🔒 Segurança total</h4>
+        <p>Seus dados são criptografados de ponta-a-ponta durante todo o processo.</p>
+      </div>
+      <div class="info-box">
+        <h4>💳 Formas de pagamento</h4>
+        <p>Aceitamos os meios de pagamento mais populares!</p>
+        <p>Pagamentos em USD por PayPal ou Binance!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-logo">
+      <img src="imgs/log.png" alt="Logo">
+    </div>
+    <div class="footer-socials">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-discord"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Copyright © 2025 - VIP</p>
+  </div>
+</footer>
+
+<script>
+  // Produtos disponíveis
+  const produtos = {
+    VIP1: {
+      title: "GTA 6",
+      image: "https://viciados.net/wp-content/uploads/2024/09/GTA-6-Grand-Theft-Auto-VI-Trailer-2-Oficial-Rockstar-Games-2024.webp",
+      infoImage: "https://conectaja.proteste.org.br/wp-content/uploads/2023/12/GTA-6-970x472.jpg",
+      oldPrice: "R$ 0,00 a R$ 0,00",
+      price: "R$ 0,00 a R$ 0,00",
+      buyLink: "",
+      highlights: [
+        "✔️ Desde 2022 permanecendo sempre no topo",
+        "✔️ Atualizações Constantes compatíveis com os patches mais recentes",
+        "✔️ Sistema Inteligente Integrado para uso otimizado",
+      ],
+      functions: [
+        "🆕 Novidades!",
+      ]
+    },
+    VIP2: {
+      title: "GTA 6",
+      image: "https://viciados.net/wp-content/uploads/2024/09/GTA-6-Grand-Theft-Auto-VI-Trailer-2-Oficial-Rockstar-Games-2024.webp",
+      infoImage: "https://conectaja.proteste.org.br/wp-content/uploads/2023/12/GTA-6-970x472.jpg",
+      oldPrice: "R$ 0,00 a R$ 0,00",
+      price: "R$ 0,00 a R$ 0,00",
+      buyLink: "",
+      highlights: [
+        "✔️ Desde 2022 permanecendo sempre no topo",
+        "✔️ Atualizações Constantes compatíveis com os patches mais recentes",
+        "✔️ Sistema Inteligente Integrado para uso otimizado",
+      ],
+      functions: [
+        "🆕 Novidades!",
+      ]
+    },
+    VIP3: {
+      title: "GTA 6",
+      image: "https://viciados.net/wp-content/uploads/2024/09/GTA-6-Grand-Theft-Auto-VI-Trailer-2-Oficial-Rockstar-Games-2024.webp",
+      infoImage: "https://conectaja.proteste.org.br/wp-content/uploads/2023/12/GTA-6-970x472.jpg",
+      oldPrice: "R$ 0,00 a R$ 0,00",
+      price: "R$ 0,00 a R$ 0,00",
+      buyLink: "",
+      highlights: [
+        "✔️ Desde 2022 permanecendo sempre no topo",
+        "✔️ Atualizações Constantes compatíveis com os patches mais recentes",
+        "✔️ Sistema Inteligente Integrado para uso otimizado",
+      ],
+      functions: [
+        "🆕 Novidades!",
+      ]
+    },
+    VIP4: {
+      title: "GTA 6",
+      image: "https://viciados.net/wp-content/uploads/2024/09/GTA-6-Grand-Theft-Auto-VI-Trailer-2-Oficial-Rockstar-Games-2024.webp",
+      infoImage: "https://conectaja.proteste.org.br/wp-content/uploads/2023/12/GTA-6-970x472.jpg",
+      oldPrice: "R$ 0,00 a R$ 0,00",
+      price: "R$ 0,00 a R$ 0,00",
+      buyLink: "",
+      highlights: [
+        "✔️ Desde 2022 permanecendo sempre no topo",
+        "✔️ Atualizações Constantes compatíveis com os patches mais recentes",
+        "✔️ Sistema Inteligente Integrado para uso otimizado",
+      ],
+      functions: [
+        "🆕 Novidades!",
+      ]
+    },
+    VIP5: {
+      title: "GTA 6",
+      image: "https://viciados.net/wp-content/uploads/2024/09/GTA-6-Grand-Theft-Auto-VI-Trailer-2-Oficial-Rockstar-Games-2024.webp",
+      infoImage: "https://conectaja.proteste.org.br/wp-content/uploads/2023/12/GTA-6-970x472.jpg",
+      oldPrice: "R$ 0,00 a R$ 0,00",
+      price: "R$ 0,00 a R$ 0,00",
+      buyLink: "",
+      highlights: [
+        "✔️ Desde 2022 permanecendo sempre no topo",
+        "✔️ Atualizações Constantes compatíveis com os patches mais recentes",
+        "✔️ Sistema Inteligente Integrado para uso otimizado",
+      ],
+      functions: [
+        "🆕 Novidades!",
+      ]
+    },
+    VIP6: {
+      title: "GTA 6",
+      image: "https://viciados.net/wp-content/uploads/2024/09/GTA-6-Grand-Theft-Auto-VI-Trailer-2-Oficial-Rockstar-Games-2024.webp",
+      infoImage: "https://conectaja.proteste.org.br/wp-content/uploads/2023/12/GTA-6-970x472.jpg",
+      oldPrice: "R$ 0,00 a R$ 0,00",
+      price: "R$ 0,00 a R$ 0,00",
+      buyLink: "",
+      highlights: [
+        "✔️ Desde 2022 permanecendo sempre no topo",
+        "✔️ Atualizações Constantes compatíveis com os patches mais recentes",
+        "✔️ Sistema Inteligente Integrado para uso otimizado",
+      ],
+      functions: [
+        "🆕 Novidades!",
+      ]
+    },
+    VIP7: {
+      title: "GTA 6",
+      image: "https://viciados.net/wp-content/uploads/2024/09/GTA-6-Grand-Theft-Auto-VI-Trailer-2-Oficial-Rockstar-Games-2024.webp",
+      infoImage: "https://conectaja.proteste.org.br/wp-content/uploads/2023/12/GTA-6-970x472.jpg",
+      oldPrice: "R$ 0,00 a R$ 0,00",
+      price: "R$ 0,00 a R$ 0,00",
+      buyLink: "",
+      highlights: [
+        "✔️ Desde 2022 permanecendo sempre no topo",
+        "✔️ Atualizações Constantes compatíveis com os patches mais recentes",
+        "✔️ Sistema Inteligente Integrado para uso otimizado",
+      ],
+      functions: [
+        "🆕 Novidades!",
+      ]
+    }
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const produtoId = params.get('produto') || 'VIP1';
+
+  const p = produtos[produtoId];
+
+  document.getElementById("product-title").innerText = p.title;
+  document.getElementById("product-image").src = p.image;
+  document.getElementById("info-image").src = p.infoImage;
+  document.getElementById("old-price").innerText = p.oldPrice;
+  document.getElementById("price").innerText = p.price;
+  document.getElementById("buy-btn").href = p.buyLink;
+
+  const highlightsList = document.getElementById("highlights-list");
+  p.highlights.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    highlightsList.appendChild(li);
+  });
+
+  const functionsList = document.getElementById("functions-list");
+  p.functions.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    functionsList.appendChild(li);
+  });
+</script>
+
+</body>
+</html>
