@@ -8,4 +8,4 @@ Foi pensado para demonstrar boas práticas de front-end, com um design limpo, re
 Você pode usar a mesma logica para a parte do pagamento ao clicar em Comprar agora.
 
 ## Demonstração
-![Demonstração do projeto](https://i.imgur.com/KNYsJin.gif)"# ListagemWeb" 
+![Demonstração do projeto](https://i.imgur.com/KNYsJin.gif)
